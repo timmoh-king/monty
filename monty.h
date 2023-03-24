@@ -39,11 +39,18 @@ typedef struct instruction_s
 } instruction_t;
 
 
-/* Error functions */
+/* Monty compiler error functions */
 int usage_error(void);
 int f_open_error(char *filename);
 int unknown_op_error(char *opcode, unsigned int line_number);
 int malloc_error(void);
 int no_int_error(unsigned int line_number);
+
+/*Error functions*/
+int pop_error(unsigned int line_number);
+int pint_error(unsigned int line_number);
+int short_stack_error(unsigned int line_number, char *op);
+int div_error(unsigned int line_number);
+int pchar_error(unsigned int line_number, char *message);
 
 #endif
