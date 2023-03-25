@@ -53,4 +53,10 @@ int short_stack_error(unsigned int line_number, char *op);
 int div_error(unsigned int line_number);
 int pchar_error(unsigned int line_number, char *message);
 
+/* Tokenizer */
+char **token(char *cmd);
+
+/* Get opcodes */
+void(*getop(char *str)(stack_t**, unsigned int));
+
 #endif
