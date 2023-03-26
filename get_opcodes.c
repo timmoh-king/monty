@@ -29,8 +29,8 @@ void push(stack_t **head, unsigned int line_number)
 	stack_t *temp = malloc(sizeof(stack_t));
 	int data = 10;
 
-	/* if (av[1] != NULL)
-		data = atoi(av[1]); */
+	if (av[1] != NULL)
+		data = atoi(av[1]);
 
 	if (av[1] == NULL || isdigit(data) == 0)
 		(no_int_error(line_number));
