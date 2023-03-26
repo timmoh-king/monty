@@ -9,7 +9,7 @@ size_t stack_len(const stack_t *h);
  */
 size_t stack_len(const stack_t *h)
 {
-	size_t sum_elements;
+	size_t sum_elements = 0;
 
 	while (h)
 	{
