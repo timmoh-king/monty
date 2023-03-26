@@ -8,13 +8,13 @@
  */
 char **token(char *cmd)
 {
-	char **av = malloc((char *) * 100);
+	char **av = malloc(sizeof(char *) * 100);
 	char delim[] = " \t\r\n";
 	char *token = strtok(cmd, delim);
 	int i = 0;
 
-	if (av = NULL)
-		return (malloc_error());
+	if (av == NULL)
+		(malloc_error());
 
 	while (token)
 	{

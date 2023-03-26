@@ -3,9 +3,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
 #include <stddef.h>
 #include <stdarg.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+/* Global variable */
+char *line;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -40,11 +48,11 @@ typedef struct instruction_s
 
 
 /* Monty compiler error functions */
-int usage_error(void);
-int f_open_error(char *filename);
-int unknown_op_error(char *opcode, unsigned int line_number);
-int malloc_error(void);
-int no_int_error(unsigned int line_number);
+void usage_error(void);
+void f_open_error(char *filename);
+void unknown_op_error(char *opcode, unsigned int line_number);
+void malloc_error(void);
+void no_int_error(unsigned int line_number);
 
 /*Error functions*/
 int pop_error(unsigned int line_number);
@@ -57,7 +65,7 @@ int pchar_error(unsigned int line_number, char *message);
 char **token(char *cmd);
 
 /* Get opcodes */
-void(*getop(char *str)(stack_t**, unsigned int));
+void(*getop(char *str))(stack_t**, unsigned int);
 
 /* Length of the stack */
 size_t stack_len(const stack_t *h);
