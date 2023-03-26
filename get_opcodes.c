@@ -9,14 +9,14 @@ size_t stack_len(const stack_t *h);
  */
 size_t stack_len(const stack_t *h)
 {
-	size_t sum_elements = 0;
+	size_t sum_elements = 1;
 
 	while (h)
 	{
 		sum_elements++;
 		h = h->next;
 	}
-	return(sum_elements);
+	return (sum_elements);
 }
 /**
  * push - push new node to the stack
@@ -29,13 +29,14 @@ void push(stack_t **head, unsigned int line_number)
 {
 	char **av = token(line);
 	stack_t *temp = malloc(sizeof(stack_t));
-	int data = 10;
+	int data;
 
 	if (av[1] != NULL)
 		data = atoi(av[1]);
 
-	if (av[1] == NULL || isdigit(data) == 0)
+	if (av[1] == NULL || isdigit(data) != 0)
 		no_int_error(line_number);
+
 
 	if (temp == NULL)
 		malloc_error();
@@ -54,11 +55,9 @@ void push(stack_t **head, unsigned int line_number)
  */
 void pall(stack_t **head, unsigned int line_number)
 {
-	char **av = token(line);
+	(void) line_number;
 
-	if (av[0] == NULL)
-		no_int_error(line_number);
-	if (*head != NULL)
+	while (*head != NULL)
 	{
 		printf("%d\n", (*head)->n);
 		*head = (*head)->next;

@@ -26,3 +26,21 @@ char **token(char *cmd)
 	av[i] = NULL;
 	return (av);
 }
+/**
+ * is_digit - check for digits
+ * @str: the string passed
+ *
+ * Return: 1 or 0 on fail
+ */
+int is_digit(char *str)
+{
+	int i;
+	int len = strlen(str);
+
+	for (i = 0; i < len; i++)
+	{
+		if (str[i] > 0 && str[i] <= 9)
+			return (1);
+	}
+	return (0);
+}

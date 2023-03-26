@@ -12,9 +12,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-/* Global variable */
-char *line;
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -46,6 +43,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* variables */
+char *line;
 
 /* Monty compiler error functions */
 void usage_error(void);
@@ -71,5 +70,7 @@ void pall(stack_t **head, unsigned int line_number);
 
 /* Length of the stack */
 size_t stack_len(const stack_t *h);
+int is_digit(char *str);
+int unknown_opcode(char *str);
 
 #endif
