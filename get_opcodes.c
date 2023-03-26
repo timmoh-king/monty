@@ -20,6 +20,8 @@ size_t stack_len(const stack_t *h)
 }
 /**
  * push - push new node to the stack
+ * @head: the head node
+ * @line_number: the number of line
  *
  * Return: nothing
  */
@@ -33,15 +35,34 @@ void push(stack_t **head, unsigned int line_number)
 		data = atoi(av[1]);
 
 	if (av[1] == NULL || isdigit(data) == 0)
-		(no_int_error(line_number));
+		no_int_error(line_number);
 
 	if (temp == NULL)
-		(malloc_error());
+		malloc_error();
 
 	temp->n = data;
 	temp->next = *head;
 	temp->prev = NULL;
 	*head = temp;
+}
+/**
+ * pall - print all opcodes
+ * @head: the head node
+ * @line_number: the line number
+ *
+ * Return: nothing
+ */
+void pall(stack_t **head, unsigned int line_number)
+{
+	char **av = token(line);
+
+	if (av[0] == NULL)
+		no_int_error(line_number);
+	if (*head != NULL)
+	{
+		printf("%d\n", (*head)->n);
+		*head = (*head)->next;
+	}
 }
 /**
  * getop - get the opcodes
@@ -55,6 +76,7 @@ void(*getop(char *str))(stack_t**, unsigned int)
 {
 	instruction_t op[] = {
 		{"push", push},
+		{"pall", pall},
 		{NULL, NULL},
 	};
 	int i = 0;

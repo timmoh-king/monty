@@ -14,7 +14,7 @@ char **token(char *cmd)
 	int i = 0;
 
 	if (av == NULL)
-		(malloc_error());
+		malloc_error();
 
 	while (token)
 	{

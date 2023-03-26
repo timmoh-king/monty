@@ -16,13 +16,13 @@ int main(int argc, char **argv)
         FILE *fd = fopen(argv[1], "r");
         line = malloc(sizeof(char) * 100);
         if (line == NULL || line_cpy == NULL)
-		(malloc_error());
+		malloc_error();
 
         if (fd == NULL)
-                (f_open_error(argv[1]));
+		f_open_error(argv[1]);
         
         if (argc != 2)
-                (usage_error());
+		usage_error();
 
         while (fgets(line, sizeof(line),  fd))
         {
