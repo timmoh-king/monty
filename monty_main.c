@@ -30,7 +30,7 @@ int main()
 			continue;
 		if (unknown_opcode(av[0]) == -1)
 			/* opcode error */
-		len = list_len(head);
+		len = stack_len(head);
 		(*getop(av[0]))(&head, len);
 	}
 	fclose(fd);

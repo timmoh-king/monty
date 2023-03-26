@@ -1,5 +1,23 @@
 #include "monty.h"
 
+size_t stack_len(const stack_t *h);
+/**
+ * stack_len - length of the stack
+ * @h: the head node
+ *
+ * Return: length of the stack
+ */
+size_t stack_len(const stack_t *h)
+{
+	size_t sum_elements;
+
+	while (h)
+	{
+		sum_elements++;
+		h = h->next;
+	}
+	return(sum_elements);
+}
 /**
  * getop - get the opcodes
  * @str: the name of the opcode

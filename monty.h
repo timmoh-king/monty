@@ -59,4 +59,7 @@ char **token(char *cmd);
 /* Get opcodes */
 void(*getop(char *str)(stack_t**, unsigned int));
 
+/* Length of the stack */
+size_t stack_len(const stack_t *h);
+
 #endif
