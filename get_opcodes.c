@@ -8,7 +8,7 @@
  *
  * Return: nothing
  */
-void(*getop(char *str)(stack_t**, unsigned int f))
+void(*getop(char *str)(stack_t**, unsigned int))
 {
 	instruction_t op[] = {
 		{"push", push},
