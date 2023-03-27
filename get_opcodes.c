@@ -66,8 +66,6 @@ void pall(stack_t **head, unsigned int line_number)
 /**
  * getop - get the opcodes
  * @str: the name of the opcode
- * @stack_t: the opcode structure
- * @int: the number
  *
  * Return: nothing
  */
