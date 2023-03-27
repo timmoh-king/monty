@@ -39,7 +39,7 @@ int is_digit(char *str)
 
 	for (i = 0; i < len; i++)
 	{
-		if (str[i] > '0' && str[i] <= '9')
+		if (str[i] >= '0' && str[i] <= '9')
 			return (1);
 	}
 	return (0);
@@ -52,8 +52,7 @@ int is_digit(char *str)
  */
 int unknown_opcode(char *str)
 {
-	if (strcmp(str, "push") == 0 && strcmp(str, "pall") == 0)
-		return (0);
-	else
+	if ((strcmp("push", str) != 0) && (strcmp("pall", str) != 0))
 		return (-1);
+	return (0);
 }
