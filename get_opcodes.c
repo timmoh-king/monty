@@ -34,7 +34,7 @@ void push(stack_t **head, unsigned int line_number)
 	if (av[1] != NULL)
 		data = atoi(av[1]);
 
-	if (av[1] == NULL || isdigit(data) != 0)
+	if (av[1] == NULL || is_digit(av[1]) == 0)
 		no_int_error(line_number);
 
 
