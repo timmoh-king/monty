@@ -35,6 +35,9 @@ int main(int argc, char **argv)
 
 		len = stack_len(head);
 
+		if (unknown_opcode(av[0]) == -1)
+			unknown_op_error(av[0], len);
+
 		(*getop(av[0]))(&head, len);
 	}
 	fclose(fd);

@@ -44,3 +44,16 @@ int is_digit(char *str)
 	}
 	return (0);
 }
+/**
+ * unknown_opcode - unknown opcode operand
+ * @str: the string passed
+ *
+ * Return: 0 on success -1 on fail
+ */
+int unknown_opcode(char *str)
+{
+	if (strcmp(str, "push") == 0 && strcmp(str, "pall") == 0)
+		return (0);
+	else
+		return (-1);
+}
