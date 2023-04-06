@@ -52,17 +52,25 @@ int is_digit(char *str)
 void pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = malloc(sizeof(stack_t));
+	stack_t *tail;
 
 	if (*head == NULL)
 	{
 		printf("L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	else
+	while (*head)
 	{
-		temp = (*head)->next;
-		free(*head);
-		*head = temp;
+		temp = *head;
+		temp = temp->next;
+	}
+	if (temp->next == NULL)
+	{
+		tail = temp;
+		temp->prev->next = 0;
+		temp = tail->prev;
+		free(tail);
+		free(temp);
 	}
 }
 /**
