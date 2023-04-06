@@ -45,6 +45,27 @@ int is_digit(char *str)
 	return (0);
 }
 /**
+ * pop - remove the the top element of the stack
+ * @head: pointer to the head node
+ * @line_number: the line_number
+ */
+void pop(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp = malloc(sizeof(stack_t));
+
+	if (*head == NULL)
+	{
+		printf("L%u: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		temp = (*head)->next;
+		free(*head);
+		*head = temp;
+	}
+}
+/**
  * unknown_opcode - unknown opcode operand
  * @str: the string passed
  *
@@ -54,7 +75,8 @@ int unknown_opcode(char *str)
 {
 	if ((strcmp("push", str) != 0) &&
 			(strcmp("pall", str) != 0) &&
-			(strcmp("pint", str) != 0))
+			(strcmp("pint", str) != 0) &&
+			(strcmp("pop", str) != 0))
 		return (-1);
 	return (0);
 }

@@ -70,21 +70,15 @@ void pall(stack_t **head, unsigned int line_number)
  */
 void pint(stack_t **head, unsigned int line_number)
 {
-	stack_t *temp = malloc(sizeof(stack_t));
+	/*stack_t *temp = malloc(sizeof(stack_t));*/
 
 	if (*head == NULL)
 	{
 		printf("L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	while (*head)
-	{
-		temp = *head;
-		temp = temp->next;
-	}
-
-	if (temp->next != NULL)
-		printf("%d\n", temp->n);
+	if ((*head)->prev == 0)
+		printf("%d\n", (*head)->n);
 }
 /**
  * getop - get the opcodes
@@ -98,6 +92,7 @@ void(*getop(char *str))(stack_t**, unsigned int)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL},
 	};
 	int i = 0;
