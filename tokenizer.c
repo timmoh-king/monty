@@ -52,7 +52,9 @@ int is_digit(char *str)
  */
 int unknown_opcode(char *str)
 {
-	if ((strcmp("push", str) != 0) && (strcmp("pall", str) != 0))
+	if ((strcmp("push", str) != 0) &&
+			(strcmp("pall", str) != 0) &&
+			(strcmp("pint", str) != 0))
 		return (-1);
 	return (0);
 }

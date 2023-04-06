@@ -64,6 +64,29 @@ void pall(stack_t **head, unsigned int line_number)
 	}
 }
 /**
+ * pint - print the last stack
+ * @head: the head stack
+ * @line_number: the line number
+ */
+void pint(stack_t **head, unsigned int line_number)
+{
+	stack_t *temp = malloc(sizeof(stack_t));
+
+	if (*head == NULL)
+	{
+		printf("L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	while (*head)
+	{
+		temp = *head;
+		temp = temp->next;
+	}
+
+	if (temp->next != NULL)
+		printf("%d\n", temp->n);
+}
+/**
  * getop - get the opcodes
  * @str: the name of the opcode
  *
@@ -74,6 +97,7 @@ void(*getop(char *str))(stack_t**, unsigned int)
 	instruction_t op[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL},
 	};
 	int i = 0;

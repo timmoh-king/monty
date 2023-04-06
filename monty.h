@@ -67,6 +67,7 @@ char **token(char *cmd);
 void(*getop(char *str))(stack_t**, unsigned int);
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
+void pint(stack_t **head, unsigned int line_number);
 
 /* Length of the stack */
 size_t stack_len(const stack_t *h);
