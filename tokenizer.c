@@ -52,7 +52,6 @@ int is_digit(char *str)
 void pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = malloc(sizeof(stack_t));
-	stack_t *tail;
 
 	if (*head == NULL)
 	{
@@ -61,16 +60,22 @@ void pop(stack_t **head, unsigned int line_number)
 	}
 	while (*head)
 	{
-		temp = *head;
-		temp = temp->next;
+		temp = (*head)->next;
+		free(*head);
+		*head = temp;
 	}
-	if (temp->next == NULL)
+}
+/**
+ * swap -  swaps the top two elements of the stack
+ * @head: the head node
+ * @line_number: line number
+ */
+void swap(stack_t **head, unsigned int line_number)
+{
+	if (stack_len < 2)
 	{
-		tail = temp;
-		temp->prev->next = 0;
-		temp = tail->prev;
-		free(tail);
-		free(temp);
+		printf("L%u: can't swap, stack too short", line_number);
+		exit(EXIT_FAILURE);
 	}
 }
 /**
@@ -84,7 +89,8 @@ int unknown_opcode(char *str)
 	if ((strcmp("push", str) != 0) &&
 			(strcmp("pall", str) != 0) &&
 			(strcmp("pint", str) != 0) &&
-			(strcmp("pop", str) != 0))
+			(strcmp("pop", str) != 0) &&
+			(strcmp("swap", str) != 0))
 		return (-1);
 	return (0);
 }
